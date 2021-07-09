@@ -18,7 +18,6 @@ class AppAsset extends AssetBundle
     ];
     public $js = [
         '/js/my.js',
-//        'materials-mekup/js/',
     ];
     public $depends = [
         'yii\web\YiiAsset',

@@ -80,10 +80,14 @@ class Material extends BaseTimestamp
     {
         return $this->hasOne(Category::className(), ['id' => 'category_id']);
     }
-    public function getTypes(){
-        return $this->hasMany(Type::className(),['id'=>'type_id']);
+    public function getTags(){
+        return $this->hasMany(MaterialConnectTag::className(),[''=>'type_id']);
     }
     public function getCategories(){
         return $this->hasMany(Category::className(),['id'=>'category_id']);
+    }
+    public function getTag(){
+        return $this->hasMany(Tag::className(), ['id' => 'tag_id'])
+            ->viaTable('material_connect_tag', ['material_id' => 'id']);
     }
 }

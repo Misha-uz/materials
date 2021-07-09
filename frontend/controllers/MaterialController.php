@@ -44,11 +44,10 @@ class MaterialController extends Controller
         if (isset($string)){
             $query->orWhere(['like','material.name',$string]);
             $query->orWhere(['like','material.author',$string]);
-            $query->joinWith('types')
-                ->joinWith('categories');
-
-            $query->orWhere(['like','type.name',$string]);
+            $query->joinWith('categories')
+                ->joinWith('tag');
             $query->orWhere(['like','category.name',$string]);
+            $query->orWhere(['like','tag.name',$string]);
         }
         $materials = $query->orderBy(['material.created_at'=>SORT_DESC])->all();
 

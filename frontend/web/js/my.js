@@ -35,14 +35,16 @@ document.addEventListener('DOMContentLoaded', function () {
         .on('click', 'a.tag_delete', function (event) {
             event.preventDefault();
             let aUrl = $(this);
-            $.ajax({
-                url: aUrl.attr('href'),
-                type: 'post',
-                success: function (data) {
-                    aUrl.parent().remove();
-                    $('[name=tag_id]').append(data);
-                },
-            })
+            if(confirm(aUrl.attr('data-confirm'))) {
+                $.ajax({
+                    url: aUrl.attr('href'),
+                    type: 'post',
+                    success: function (data) {
+                        aUrl.parent().remove();
+                        $('[name=tag_id]').append(data);
+                    },
+                })
+            }
             return false;
         });
     exampleModalToggle
@@ -78,13 +80,15 @@ document.addEventListener('DOMContentLoaded', function () {
         .on('click', 'a.url_delete', function (event) {
             event.preventDefault();
             let aUrl = $(this);
-            $.ajax({
-                url: aUrl.attr('href'),
-                type: 'post',
-                success: function (data) {
-                    aUrl.parent().parent().remove();
-                },
-            })
+            if(confirm(aUrl.attr('data-confirm'))) {
+                $.ajax({
+                    url: aUrl.attr('href'),
+                    type: 'post',
+                    success: function (data) {
+                        aUrl.parent().parent().remove();
+                    },
+                })
+            }
             return false;
         })
         .on('click', 'a.url_update', function (event) {

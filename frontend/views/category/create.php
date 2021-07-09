@@ -6,8 +6,6 @@ use yii\helpers\Html;
 /* @var $model common\models\Category */
 
 $this->title = 'Добавить категорию';
-//$this->params['breadcrumbs'][] = ['label' => 'Categories', 'url' => ['index']];
-//$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="my-md-5 my-4">
 
